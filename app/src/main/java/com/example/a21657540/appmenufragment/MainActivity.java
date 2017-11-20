@@ -1,7 +1,9 @@
 package com.example.a21657540.appmenufragment;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.provider.Settings;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,12 +18,16 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     ConstraintLayout cl;
+    String mensajeFragmento1;
+    String mensajeFragmento2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         cl = (ConstraintLayout) findViewById(R.id.clContenedor);
+        mensajeFragmento1 = (String)getResources().getString(R.string.dialogFragmento1);
+        mensajeFragmento2 = (String)getResources().getString(R.string.dialogFragmento2);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,22 +50,48 @@ public class MainActivity extends AppCompatActivity {
         return builder.create();
     }
 
+    private Dialog crearDialogoOpciones(){
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
+        dialogo.setTitle("Desea salir de la aplicación");
+        dialogo.setCancelable(false);
+        dialogo.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                System.exit(0);
+            }
+        });
+        dialogo.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+
+            }
+        });
+        dialogo.show();
+        return dialogo.create();
+    }
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.menu1) {
-            crearDialogo("accedemos a fragmento 1").show();
+            crearDialogo(mensajeFragmento1).show();
             visualizar();
         } else if(item.getItemId()==R.id.menu2){
-            crearDialogo("accedemos a fragmento 2").show();
+            crearDialogo(mensajeFragmento2).show();
             visualizar();
         } else if(item.getItemId() == R.id.settings) {
             Toast toast1 =
                     Toast.makeText(getApplicationContext(),
                             "Se ha pulsado el boton settings", Toast.LENGTH_SHORT);
-
             toast1.show();
+        } else if(item.getItemId() == R.id.menu_salir) {
+            crearDialogoOpciones();
         }
         return(true);
     }
 
+
 }
+
+
+
+
+
+

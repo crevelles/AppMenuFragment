@@ -22,8 +22,8 @@
     <item
         android:id="@+id/menu_salir"
         android:orderInCategory="4"
-        app:showAsAction="never"
-        android:title="@string/menu_salir"/>
+        android:title="@string/menu_salir"
+        app:showAsAction="never" />
 
 
 </menu>
