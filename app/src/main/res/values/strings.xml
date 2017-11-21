@@ -6,10 +6,8 @@
     <string name="settings">settings</string>
     <string name="menu_salir">menu_salir</string>
     <string name="fragmento1">Primer fragmento</string>
-    <string name="fragmento2">accedemos a fragmento2</string>
+    <string name="fragmento2">Segundo fragmento</string>
     <string name="dialogFragmento1">accedemos a fragmento1</string>
     <string name="dialogFragmento2">accedemos a fragmento2</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

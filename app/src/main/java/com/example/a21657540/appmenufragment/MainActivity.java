@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.provider.Settings;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -36,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void visualizar(){
+    public void visualizar(Fragment f){
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.clContenedor, new Fragmento1());
+        ft.replace(R.id.clContenedor, f);
         ft.commit();
     }
 
@@ -72,10 +73,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.menu1) {
             crearDialogo(mensajeFragmento1).show();
-            visualizar();
+            Fragmento1 f = new Fragmento1();
+            visualizar(f);
         } else if(item.getItemId()==R.id.menu2){
             crearDialogo(mensajeFragmento2).show();
-            visualizar();
+            Fragmento2 f = new Fragmento2();
+            visualizar(f);
         } else if(item.getItemId() == R.id.settings) {
             Toast toast1 =
                     Toast.makeText(getApplicationContext(),
