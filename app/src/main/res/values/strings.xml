@@ -9,5 +9,7 @@
     <string name="fragmento2">Segundo fragmento</string>
     <string name="dialogFragmento1">accedemos a fragmento1</string>
     <string name="dialogFragmento2">accedemos a fragmento2</string>
+    <string name="mensaBTNsettings">Se ha pulsado el boton settings</string>
+    <string name="mensaSalirApp">Desea salir de la aplicación</string>
 
 </resources>

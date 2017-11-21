@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout cl;
     String mensajeFragmento1;
     String mensajeFragmento2;
+    String mensaBTNsettings;
+    String mensaSalirApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         cl = (ConstraintLayout) findViewById(R.id.clContenedor);
         mensajeFragmento1 = (String)getResources().getString(R.string.dialogFragmento1);
         mensajeFragmento2 = (String)getResources().getString(R.string.dialogFragmento2);
+        mensaBTNsettings  = (String)getResources().getString(R.string.mensaBTNsettings);
+        mensaSalirApp = (String)getResources().getString(R.string.mensaSalirApp);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Dialog crearDialogoOpciones(){
         AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
-        dialogo.setTitle("Desea salir de la aplicación");
+        dialogo.setTitle(mensaSalirApp);
         dialogo.setCancelable(false);
         dialogo.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogo1, int id) {
@@ -82,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         } else if(item.getItemId() == R.id.settings) {
             Toast toast1 =
                     Toast.makeText(getApplicationContext(),
-                            "Se ha pulsado el boton settings", Toast.LENGTH_SHORT);
+                            mensaBTNsettings, Toast.LENGTH_SHORT);
             toast1.show();
         } else if(item.getItemId() == R.id.menu_salir) {
             crearDialogoOpciones();
