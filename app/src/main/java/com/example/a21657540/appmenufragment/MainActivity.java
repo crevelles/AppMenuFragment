@@ -1,6 +1,7 @@
 package com.example.a21657540.appmenufragment;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.provider.Settings;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     String mensajeFragmento2;
     String mensaBTNsettings;
     String mensaSalirApp;
+    private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         dialogo.setCancelable(false);
         dialogo.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogo1, int id) {
-                System.exit(0);
+                iniciarProgressDialogSpinner();
             }
         });
         dialogo.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -94,6 +96,28 @@ public class MainActivity extends AppCompatActivity {
         return(true);
     }
 
+
+    public void iniciarProgressDialogSpinner(){
+
+        pd = new ProgressDialog(MainActivity.this);
+        pd.setMessage("Saliendo");
+        pd.setTitle("Finalizando");
+        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        pd.show(); // Display Progress Dialog
+        pd.setCancelable(false);
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                pd.dismiss();
+            }
+        }).start();
+
+    }
 
 }
 
